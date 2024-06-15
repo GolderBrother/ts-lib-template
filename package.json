@@ -1,0 +1,81 @@
+{
+  "name": "pkg-name",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.3.0",
+  "description": "一个 ts lib 的模板仓库，可以当做初始化 ts 库使用",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "GolderBrother",
+    "email": "1204788939@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GolderBrother/ts-lib-template"
+  },
+  "bugs": "",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "commit": "git-cz",
+    "lint": "eslint --cache .",
+    "test": "vitest run",
+    "build": "tsup",
+    "start": "tsx src/index.ts",
+    "release": "bumpp && npm publish",
+    "bump:version": "bumpp",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "update:deps": "taze major -lr",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.13.2",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "bumpp": "^9.4.0",
+    "commitizen": "^4.3.0",
+    "eslint": "^9.0.0",
+    "git-cz": "^4.9.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "taze": "^0.13.3",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.4",
+    "vitest": "^1.4.0"
+  },
+  "license": "MIT"
+}
